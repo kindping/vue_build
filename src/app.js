@@ -11,5 +11,9 @@ new Vue({
             title: 'Student List',
         }
     },
-    methods: {}
+    methods: {
+        doAdd(name) {
+            this.$refs.table.doAdd(name);
+        }
+    }
 })

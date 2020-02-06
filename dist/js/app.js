@@ -32,7 +32,8 @@ __webpack_require__.r(__webpack_exports__);
         return alertify.error('名稱未輸入');
       }
 
-      console.log(this.name);
+      this.$emit('add', this.name);
+      this.name = '';
     },
     enterDoAdd: function enterDoAdd(e) {
       if (e.keyCode == 13 || e.which == 13) {
@@ -106,6 +107,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     removeIndex: function removeIndex(index) {
       this.items.splice(index, 1);
+    },
+    doAdd: function doAdd(name) {
+      this.items.push({
+        name: name,
+        students: []
+      });
     }
   }
 });
@@ -933,7 +940,11 @@ new Vue({
       title: 'Student List'
     };
   },
-  methods: {}
+  methods: {
+    doAdd: function doAdd(name) {
+      this.$refs.table.doAdd(name);
+    }
+  }
 });
 
 /***/ }),
