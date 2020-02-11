@@ -80,16 +80,16 @@ export default {
             this.$emit('save', this.items);
         },
         doAdd() {
-            for (let f in this.data) {
-                if (!this.data[f]) {
-                    alertify.error('欄位未填寫');
-                    return this.$refs[f].focus();
-                }
+            if (!this.valid()) {
+                return false;
             }
             this.items.push(JSON.parse(JSON.stringify(this.data)));
             this.reset();
         },
         doUpdate() {
+            if (!this.valid()) {
+                return false;
+            }
             this.mode = 'add';
             this.items[this.editIndex] = JSON.parse(JSON.stringify(this.data));
             this.reset();
@@ -98,6 +98,16 @@ export default {
             for (let f in this.data) {
                 this.data[f] = '';
             }
+        },
+        valid() {
+            for (let f in this.data) {
+                if (!this.data[f]) {
+                    alertify.error('欄位未填寫');
+                    this.$refs[f].focus();
+                    return false
+                }
+            }
+            return true;
         }
     }
 }
