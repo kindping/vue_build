@@ -18,8 +18,8 @@ export default {
         }
     },
     methods: {
-        load(data) {
-            this.name = data.name;
+        load(name) {
+            this.name = name;
         },
         doSave() {
             if (!this.name) {

@@ -27,11 +27,18 @@ new Vue({
             this.mode = 'edit';
             this.editIndex = index;
             this.editData = data;
-            this.$refs.editListName.load(data);
+            this.$refs.editListName.load(data.name);
+            this.$refs.studentTable.load(data.students);
         },
         doSaveName(name) {
             this.editData.name = name;
             this.$refs.table.update(this.editIndex, this.editData);
+            alertify.success('儲存完成');
+        },
+        doSaveStudents(students) {
+            this.editData.students = students;
+            this.$refs.table.update(this.editIndex, this.editData);
+            alertify.success('儲存完成');
         }
     }
 })

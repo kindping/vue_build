@@ -23,9 +23,11 @@
                 <button class="btn btn-danger btn-sm" @click="toList">回列表</button>
             </div>
             <h5>名稱編輯</h5>
+            <hr>
             <edit-list-name ref="editListName" @save="doSaveName"></edit-list-name>
             <h5>學生列表</h5>
-            <student-table ref="studentTable"></student-table>
+            <hr>
+            <student-table ref="studentTable" @save="doSaveStudents"></student-table>
         </div>
     </div>
 </body>
