@@ -45,6 +45,50 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/components/EditListName.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/EditListName.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: [],
+  data: function data() {
+    return {
+      name: ''
+    };
+  },
+  methods: {
+    load: function load(data) {
+      this.name = data.name;
+    },
+    doSave: function doSave() {
+      if (!this.name) {
+        this.$refs.name.focus();
+        return alertify.error('未輸入名稱');
+      }
+
+      this.$emit('save', this.name);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/components/StudentNameList.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/StudentNameList.vue?vue&type=script&lang=js& ***!
@@ -85,7 +129,11 @@ __webpack_require__.r(__webpack_exports__);
     return {
       items: [{
         name: '資優生',
-        students: []
+        students: [{
+          name: 'A',
+          sex: 'M',
+          age: 19
+        }]
       }, {
         name: '放牛班',
         students: []
@@ -113,7 +161,59 @@ __webpack_require__.r(__webpack_exports__);
         name: name,
         students: []
       });
+    },
+    toEdit: function toEdit(index) {
+      var data = this.items[index];
+      this.$emit('edit', index, data);
+    },
+    update: function update(index, data) {
+      this.items[index] = data;
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/components/StudentTable.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/StudentTable.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: [],
+  data: function data() {
+    return {
+      items: []
+    };
   }
 });
 
@@ -644,6 +744,65 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/EditListName.vue?vue&type=template&id=413b29ba&":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/EditListName.vue?vue&type=template&id=413b29ba& ***!
+  \******************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "" } }, [_vm._v("清冊名稱")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.name,
+            expression: "name"
+          }
+        ],
+        ref: "name",
+        staticClass: "form-control",
+        attrs: { type: "text" },
+        domProps: { value: _vm.name },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.name = $event.target.value
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group text-right" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-danger btn-sm", on: { click: _vm.doSave } },
+        [_vm._v("儲存")]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/StudentNameList.vue?vue&type=template&id=d75415b8&":
 /*!*********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/StudentNameList.vue?vue&type=template&id=d75415b8& ***!
@@ -674,7 +833,7 @@ var render = function() {
                   staticClass: "btn btn-primary btn-sm",
                   on: {
                     click: function($event) {
-                      return _vm.setIndex(index)
+                      return _vm.toEdit(index)
                     }
                   }
                 },
@@ -766,6 +925,93 @@ var staticRenderFns = [
         _c("th", [_vm._v("功能")]),
         _vm._v(" "),
         _c("th", [_vm._v("名稱")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/StudentTable.vue?vue&type=template&id=7ebc2903&":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/StudentTable.vue?vue&type=template&id=7ebc2903& ***!
+  \******************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "table-responsive" }, [
+    _c("table", { staticClass: "table table-dark" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        _vm._l(_vm.items, function(item, index) {
+          return _c("tr", { key: index }, [
+            _c("td", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary btn-sm",
+                  on: {
+                    click: function($event) {
+                      return _vm.setIndex(index)
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fas fa-edit" }), _vm._v(" 編輯")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger btn-sm",
+                  on: {
+                    click: function($event) {
+                      return _vm.removeIndex(index)
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "far fa-trash-alt" }), _vm._v(" 刪除")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("td", [_vm._v("Name")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("Sex")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("Age")])
+          ])
+        }),
+        0
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("功能")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("名稱")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("性別")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("年齡")])
       ])
     ])
   }
@@ -925,7 +1171,11 @@ module.exports = g;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_StudentNameList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/StudentNameList */ "./src/components/StudentNameList.vue");
 /* harmony import */ var _components_AddStudent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/AddStudent */ "./src/components/AddStudent.vue");
+/* harmony import */ var _components_StudentTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/StudentTable */ "./src/components/StudentTable.vue");
+/* harmony import */ var _components_EditListName__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/EditListName */ "./src/components/EditListName.vue");
 __webpack_require__(/*! ./bootstrap */ "./src/bootstrap.js");
+
+
 
 
 
@@ -933,16 +1183,34 @@ new Vue({
   el: '#app',
   components: {
     StudentNameList: _components_StudentNameList__WEBPACK_IMPORTED_MODULE_0__["default"],
-    AddStudent: _components_AddStudent__WEBPACK_IMPORTED_MODULE_1__["default"]
+    AddStudent: _components_AddStudent__WEBPACK_IMPORTED_MODULE_1__["default"],
+    StudentTable: _components_StudentTable__WEBPACK_IMPORTED_MODULE_2__["default"],
+    EditListName: _components_EditListName__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
     return {
-      title: 'Student List'
+      title: 'Student List',
+      editIndex: -1,
+      editData: {},
+      mode: 'list'
     };
   },
   methods: {
     doAdd: function doAdd(name) {
       this.$refs.table.doAdd(name);
+    },
+    toList: function toList() {
+      this.mode = 'list';
+    },
+    toEdit: function toEdit(index, data) {
+      this.mode = 'edit';
+      this.editIndex = index;
+      this.editData = data;
+      this.$refs.editListName.load(data);
+    },
+    doSaveName: function doSaveName(name) {
+      this.editData.name = name;
+      this.$refs.table.update(this.editIndex, this.editData);
     }
   }
 });
@@ -1043,6 +1311,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/components/EditListName.vue":
+/*!*****************************************!*\
+  !*** ./src/components/EditListName.vue ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EditListName_vue_vue_type_template_id_413b29ba___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditListName.vue?vue&type=template&id=413b29ba& */ "./src/components/EditListName.vue?vue&type=template&id=413b29ba&");
+/* harmony import */ var _EditListName_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditListName.vue?vue&type=script&lang=js& */ "./src/components/EditListName.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EditListName_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditListName_vue_vue_type_template_id_413b29ba___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditListName_vue_vue_type_template_id_413b29ba___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "src/components/EditListName.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./src/components/EditListName.vue?vue&type=script&lang=js&":
+/*!******************************************************************!*\
+  !*** ./src/components/EditListName.vue?vue&type=script&lang=js& ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditListName_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/babel-loader/lib??ref--4-0!../../node_modules/vue-loader/lib??vue-loader-options!./EditListName.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/components/EditListName.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditListName_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./src/components/EditListName.vue?vue&type=template&id=413b29ba&":
+/*!************************************************************************!*\
+  !*** ./src/components/EditListName.vue?vue&type=template&id=413b29ba& ***!
+  \************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditListName_vue_vue_type_template_id_413b29ba___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib??vue-loader-options!./EditListName.vue?vue&type=template&id=413b29ba& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/EditListName.vue?vue&type=template&id=413b29ba&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditListName_vue_vue_type_template_id_413b29ba___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditListName_vue_vue_type_template_id_413b29ba___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./src/components/StudentNameList.vue":
 /*!********************************************!*\
   !*** ./src/components/StudentNameList.vue ***!
@@ -1112,6 +1449,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/components/StudentTable.vue":
+/*!*****************************************!*\
+  !*** ./src/components/StudentTable.vue ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _StudentTable_vue_vue_type_template_id_7ebc2903___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StudentTable.vue?vue&type=template&id=7ebc2903& */ "./src/components/StudentTable.vue?vue&type=template&id=7ebc2903&");
+/* harmony import */ var _StudentTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StudentTable.vue?vue&type=script&lang=js& */ "./src/components/StudentTable.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _StudentTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _StudentTable_vue_vue_type_template_id_7ebc2903___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _StudentTable_vue_vue_type_template_id_7ebc2903___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "src/components/StudentTable.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./src/components/StudentTable.vue?vue&type=script&lang=js&":
+/*!******************************************************************!*\
+  !*** ./src/components/StudentTable.vue?vue&type=script&lang=js& ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StudentTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/babel-loader/lib??ref--4-0!../../node_modules/vue-loader/lib??vue-loader-options!./StudentTable.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/components/StudentTable.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StudentTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./src/components/StudentTable.vue?vue&type=template&id=7ebc2903&":
+/*!************************************************************************!*\
+  !*** ./src/components/StudentTable.vue?vue&type=template&id=7ebc2903& ***!
+  \************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StudentTable_vue_vue_type_template_id_7ebc2903___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib??vue-loader-options!./StudentTable.vue?vue&type=template&id=7ebc2903& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/StudentTable.vue?vue&type=template&id=7ebc2903&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StudentTable_vue_vue_type_template_id_7ebc2903___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StudentTable_vue_vue_type_template_id_7ebc2903___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ 0:
 /*!*****************************************!*\
   !*** multi ./src/app.js ./src/app.scss ***!
@@ -1119,8 +1525,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\laravelmix\src\app.js */"./src/app.js");
-module.exports = __webpack_require__(/*! E:\laravelmix\src\app.scss */"./src/app.scss");
+__webpack_require__(/*! C:\Users\USER\Documents\vue_build\src\app.js */"./src/app.js");
+module.exports = __webpack_require__(/*! C:\Users\USER\Documents\vue_build\src\app.scss */"./src/app.scss");
 
 
 /***/ })

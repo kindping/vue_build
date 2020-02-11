@@ -2,18 +2,36 @@ require('./bootstrap')
 
 import StudentNameList from './components/StudentNameList'
 import AddStudent from './components/AddStudent'
+import StudentTable from './components/StudentTable'
+import EditListName from './components/EditListName'
 
 new Vue({
     el: '#app',
-    components: { StudentNameList, AddStudent },
+    components: { StudentNameList, AddStudent, StudentTable, EditListName },
     data() {
         return {
             title: 'Student List',
+            editIndex: -1,
+            editData: {},
+            mode: 'list',
         }
     },
     methods: {
         doAdd(name) {
             this.$refs.table.doAdd(name);
+        },
+        toList() {
+            this.mode = 'list';
+        },
+        toEdit(index, data) {
+            this.mode = 'edit';
+            this.editIndex = index;
+            this.editData = data;
+            this.$refs.editListName.load(data);
+        },
+        doSaveName(name) {
+            this.editData.name = name;
+            this.$refs.table.update(this.editIndex, this.editData);
         }
     }
 })

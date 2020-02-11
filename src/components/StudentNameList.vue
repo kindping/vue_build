@@ -10,7 +10,7 @@
             <tbody>
                 <tr v-for="(item, index) in items" :key="index">
                     <td>
-                        <button class="btn btn-primary btn-sm" @click="setIndex(index)"><i class="fas fa-edit"></i> 編輯</button>
+                        <button class="btn btn-primary btn-sm" @click="toEdit(index)"><i class="fas fa-edit"></i> 編輯</button>
                         <button class="btn btn-danger btn-sm" @click="removeIndex(index)"><i class="far fa-trash-alt"></i> 刪除</button>
                     </td>
                     <td>
@@ -29,7 +29,7 @@ export default ({
     data() {
         return  {
             items: [
-                { name: '資優生', students: [] },
+                { name: '資優生', students: [{name: 'A', sex: 'M', age: 19}] },
                 { name: '放牛班', students: [] },
                 { name: '特別分班', students: [] },
             ],
@@ -52,6 +52,13 @@ export default ({
                 name: name,
                 students: []
             });
+        },
+        toEdit(index) {
+            let data = this.items[index];
+            this.$emit('edit', index, data);
+        },
+        update(index, data) {
+            this.items[index] = data;
         }
     }
 })
