@@ -20,7 +20,8 @@
             </div>
         </div>
         <div class="form-group text-right">
-            <button class="btn btn-primary btn-sm" @click="doAdd">新增</button>
+            <button class="btn btn-primary btn-sm" @click="doAdd" v-show="mode == 'add'">新增</button>
+            <button class="btn btn-success btn-sm" @click="doUpdate"  v-show="mode == 'edit'">更新</button>
             <button class="btn btn-danger btn-sm" @click="doSave">儲存</button>
         </div>
         <div class="table-responsive">
@@ -36,7 +37,7 @@
                 <tbody>
                     <tr v-for="(item, index) in items" :key="index">
                         <td>
-                            <button class="btn btn-primary btn-sm" @click="setIndex(index)"><i class="fas fa-edit"></i> 編輯</button>
+                            <button class="btn btn-primary btn-sm" @click="toEdit(index)"><i class="fas fa-edit"></i> 編輯</button>
                             <button class="btn btn-danger btn-sm" @click="removeIndex(index)"><i class="far fa-trash-alt"></i> 刪除</button>
                         </td>
                         <td>{{ item.name }}</td>
@@ -58,19 +59,19 @@ export default {
                 name: '',
                 sex: '',
                 age: '',
-            }
+            },
+            editIndex: -1,
+            mode: 'add'
         }
     },
     methods: {
         load(students) {
             this.items = JSON.parse(JSON.stringify(students)) || [];
         },
-        setIndex(index) {
+        toEdit(index) {
             this.editIndex = index;
-
-            this.$nextTick(() => {
-                this.$refs.students && this.$refs.students[index] && this.$refs.students[index].focus();
-            });
+            this.data = JSON.parse(JSON.stringify(this.items[index]));
+            this.mode = 'edit';
         },
         removeIndex(index) {
             this.items.splice(index, 1);
@@ -86,6 +87,11 @@ export default {
                 }
             }
             this.items.push(JSON.parse(JSON.stringify(this.data)));
+            this.reset();
+        },
+        doUpdate() {
+            this.mode = 'add';
+            this.items[this.editIndex] = JSON.parse(JSON.stringify(this.data));
             this.reset();
         },
         reset() {
